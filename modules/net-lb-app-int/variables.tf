@@ -207,6 +207,17 @@ variable "ssl_certificates" {
   nullable = false
 }
 
+variable "https_proxy_config" {
+  description = "HTTPS proxy connfiguration."
+  type = object({
+    certificate_manager_certificates = optional(list(string), [])
+    quic_override                    = optional(string)
+    ssl_policy                       = optional(string)
+  })
+  default  = {}
+  nullable = false
+}
+
 variable "vpc_config" {
   description = "VPC-level configuration."
   type = object({
